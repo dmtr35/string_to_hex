@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 
-int hex_to_str (char *string)
+int hex_to_str (char *flag, char *string)
 {
     size_t leng = strlen(string);
     char *result_str = malloc(leng / 2 + 1);
@@ -16,13 +16,24 @@ int hex_to_str (char *string)
         return EXIT_FAILURE;
     }
 
-    for (int i = leng; i > 0; i-=2) {
-        buf[1] = string[i - 1];
-        buf[0] = string[i - 2];
+    if (strstr(flag, "-hr") != NULL) {
+        for (int i = 0; i < leng; i += 2) {
+            buf[0] = string[i];
+            buf[1] = string[i + 1];
 
-        char ch = (char)strtol(buf, NULL, 16);
-        result_str[j] = ch;
-        j++;
+            char ch = (char)strtol(buf, NULL, 16);
+            result_str[j] = ch;
+            j++;
+        }
+    } else {
+        for (int i = leng - 1; i > 0; i -= 2) {
+            buf[1] = string[i];
+            buf[0] = string[i - 1];
+
+            char ch = (char)strtol(buf, NULL, 16);
+            result_str[j] = ch;
+            j++;
+        }
     }
 
     result_str[j] = '\0';

@@ -1,6 +1,7 @@
 gcc str_to_hex.c -o str_to_hex
 
 -h -> hex to string
+-hr -> hex to string revers
 
 
 exemple:
