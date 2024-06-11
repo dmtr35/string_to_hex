@@ -1,12 +1,10 @@
-#include <stdio.h>
-#include <string.h>
+#include "header.h"
 
-
-int main (int argc, char *argv[])
+void str_to_hex(char *string)
 {
-    char string[256];
-    strcpy(string, argv[1]);
-    size_t leng = strlen(argv[1]);
+    size_t leng = strlen(string);
+
+
     int parts = (leng + 7) / 8;
     int remainder = leng - ((parts - 1) * 8);
 
@@ -29,6 +27,4 @@ int main (int argc, char *argv[])
         }
             printf("\n");
     }
-
-    return 0;
 }
