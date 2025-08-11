@@ -10,7 +10,7 @@
 void str_to_hex(char *string);
 
 // hex_to_str.c:
-int hex_to_str(char *string);
+int hex_to_str(char *flag, char *string);
 
 
 
